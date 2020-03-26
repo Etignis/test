@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>Заголовок страницы</title>
+  <title>Плеер</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Краткое описание страницы"> 
@@ -18,38 +18,36 @@
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
   <![endif]-->
   <style>
-   article, aside, details, figcaption, figure, footer,header,
    hgroup, menu, nav, section, div { display: block; }
+python3 Too many positional arguments for function call   article, aside, details, figcaption, figure, footer,header,
   </style>
 </head>
 
 <body>
-	<ul id='main_menu' class='block'>
-		<li><a href='#' class='active'>Home</a></li>
-		<li><a href='#'>About Us</a></li>
-		<li class='dropdown_menu'><a href='#'>Nothing</a>
-			<ul class='sub_menu-1'>
-				<li><a href='#'>Item 1</a></li>
-				<li><a href='#'>Item 2</a></li>
-				<li><a href='#'>Item 3</a></li>
-				<li><a href='#'>Item 4</a></li>
-			</ul>
-		</li>
-		<li><a href='#'>Smth</a></li>
-		<li><a href='#'>Contacts</a></li>
-	</ul>
-	
-	<div id='wrapper'>
-		
-		<div class='block'>
-			<!-- картинка -->
-			тут должна быть картинка
+	<div class='center'>
+		<div id='player'>
+			<audio id='audio'></audio>
+			<input id='files' type='file' multiple='true' accept='audio/*'>
+			<div id='info'>
+				<span id='title'> </span>
+				<span id='time'>00:00</span>
+			</div>
+			<div id='progress'>
+				<input id='progress_input' type='range' min="0" max="100" value="0">
+			</div>
+			<div id='controlls'>
+				<ul id='buttons'>
+					<li class='button' id='open' title='Открыть'>⏏</li>
+					<li class='button' id='prev' title='Предыдущий'>&#9664;&#9664;</li>
+					<li class='button' id='play' title='Играть'>&#9654;</li>
+					<li class='button' id='pause' title='Пауза'><span class='pause'></span></li>
+					<li class='button' id='next' title='Следующий'>&#9654;&#9654;</li>
+				</ul>
+				<div class='volume'>
+					<input type='range'>
+				</div>
+			</div>
 		</div>
-		<div class='block'>
-			<!-- три плашки -->
-		</div>
-		<!-- и так далее... -->
-
-	</div> 
+	</div>
 </body>
 </html>

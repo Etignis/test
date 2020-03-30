@@ -1,11 +1,18 @@
 :root{
-	--background: #fefefe;
+	--light-color: #fefefe;
+	--gray-back: #f5f5f5;
 	--dark-color: #222;
+	--gray: #ccc;
+	--light-bright-color: #7cd7ff;
 	--bright-color: #4fc3f7;
 	--menu-color: #999;
 	--menu-color-hover: #ddd;
+	--bark-back: #00000077;
 	
 	--menu-item-margin: .1em;
+	
+	--radius: 5px;
+	--mini-radius: 3px;
 }
 *{
 	box-sizing:border-box;
@@ -18,11 +25,31 @@ body, html{
 
 .block{
 	width: 100%;
-	background: var(--background)
+	padding: 1px;
+	margin: 0 auto;
+	max-width: 1000px;
+}
+.block.gray{
+	background: var(--gray-back);
+	padding: 1em;
+}
+.block.bright{
+	background: var(--bright-color);
+	background: linear-gradient(to bottom, var(--light-bright-color), var(--bright-color));
+	padding: 1em;
+	color: var(--light-color);
+	text-align: center;
+	font-weight: bold;
+}
+.block.bright button{
+	background: var(--light-color);
+	color: black;
+	font-weight: bold;
 }
 #wrapper{
 	max-width: 1000px;
 	margin: 0 auto; /*один из способов выровнять по горизонтали*/
+	background: var(--light-color);
 }
 #main_menu{
 	display: flex;
@@ -82,3 +109,198 @@ body, html{
 	display: block;
 }
 
+button{
+	border: none;
+	border-radius: var(--radius);
+	background: var(--bright-color);
+	background: linear-gradient(to bottom, var(--light-bright-color), var(--bright-color));
+	padding: 1em 2em;
+	margin: 0 1em;
+	color: var(--light-color);
+	cursor: pointer;
+	font-weight: bold;
+}
+
+input[type=text],
+textarea{
+	border: 1px solid var(--gray);
+	color: var(--gray);
+	border-radius: var(--mini-radius);
+	background: white;
+	padding: .5em;
+	margin: .5em;
+}
+textarea{
+	width: 100%;
+}
+
+h1{
+	text-align: center;
+	padding-bottom: .5em;
+	border-bottom: 1px solid #ddd;
+}
+.subtitle{
+	color: var(--menu-color);
+	text-align: center;
+}
+
+footer{
+	background: var(--gray-back);
+}
+footer .block{
+	padding: 1em 0;
+	display: flex;
+}
+footer .quatro{
+	flex-basis: 25%;
+	flex-grow: 1;
+	margin: 0 1em;
+}
+footer .duo{
+	flex-basis: 50%;
+	flex-grow: 2;
+	margin: 0 1em;
+}
+footer .title{
+	color: black;
+	margin: 1em 0;
+	font-weight: bold;
+	display: block;
+}
+
+footer .links{
+	margin: .5em 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+footer .links li{
+	display: block;
+	margin: .5em 0;
+}
+footer .links a{
+	color: var(--menu-color);
+}
+
+footer button{
+	margin: 0.5em 0;
+	background: var(--dark-color);
+	color: white;
+}
+
+footer .icons{
+	margin: 1em auto;
+	padding: 0;
+	display: flex;
+	
+}
+footer .icons li{
+	margin: 1em;
+	padding: 0;
+	display: block;
+	width: 40px;
+	padding-bottom: 10%;
+	background: var(--gray);
+}
+
+
+.flex{
+	display: flex;
+	margin: 0 -0.5em;
+}
+.flex input{
+	flex-basis: 100%;
+}
+/******/
+.poster{
+	position: relative;
+}
+.poster img{
+	width: 100%;
+	display: block;
+}
+.poster .title{
+	position: absolute;
+	left:0;
+	right: 0;
+	bottom: 0;
+	background: var(--bark-back);
+	color: var(--light-color);
+	
+	padding: 1rem;
+	text-align: center;
+}
+
+.title .template_name{
+	font-weight: bold;
+}
+
+/*********/
+.imortant_list{
+	display: flex;
+	margin: 1em 0;
+	padding: 0;
+}
+.imortant_list li{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	margin: 0 1em;
+}
+.imortant_list li img{
+	margin: 1em;
+}
+.imortant_list .title{
+	font-weight: bold;
+	display: block;
+	margin: .5em;
+}
+.imortant_list .body{
+	display: block;
+	margin: .5em;
+	
+	color: var(--menu-color);
+}
+
+/**/
+
+.thing_list{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 1em 0;
+	padding: 0;
+}
+.thing_list li{
+	display: flex;
+	max-width: 50%;
+}
+.thing_list li .img{
+	/*width: 150%;*/
+	flex-grow: 1;
+	flex-basis: 200%;
+	margin: 1em;
+	padding-bottom: 9em;
+	background-color: #f9f9f9;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.thing_list li .text{
+	flex-grow: 1;
+	flex-basis: 200%;
+	margin: 1em;
+	display: flex;
+	flex-direction: column;
+}
+.thing_list .title{
+	font-weight: bold;
+	display: block;
+	margin: .5em;
+}
+.thing_list .body{
+	display: block;
+	margin: .5em;
+	
+	color: var(--menu-color);
+}

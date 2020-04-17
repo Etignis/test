@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 		
 	
-	oAudio.onend = function(e) {
+	oAudio.onended = function(e) {
 		next();
   }
 	oAudio.addEventListener('timeupdate', function(oEvent){

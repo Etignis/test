@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
 	let bPlay = false;
+	let bMouseDown = false;
 	let oPlayButton = document.querySelector("#play");
 	let oPauseButton = document.querySelector("#pause");
 	let oPrevButton = document.querySelector("#prev");
@@ -33,8 +34,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	oAudio.onend = function(e) {
 		next();
   }
-	oAudio.addEventListener('timeupdate', function(){
-		showDurationProgress();
+	oAudio.addEventListener('timeupdate', function(oEvent){
+	
+		showDurationProgress(!bMouseDown);
 	}, false);
 	
 	oAudio.onprogress = function(){
@@ -50,7 +52,11 @@ document.addEventListener('DOMContentLoaded', function(){
 	oNextButton.onclick = next;
 	
 	oProgress.addEventListener('change',  time_change); 
-	oVolume.addEventListener('change',  volume_change); 
+	//oProgress.addEventListener('click',  pause);  
+	oProgress.addEventListener('mousedown',  function(){bMouseDown=true}); 
+	//oProgress.addEventListener('mousedown',  time_change); 
+	oProgress.addEventListener('mouseup',  function(){bMouseDown=false});
+	oVolume.addEventListener('mousemove',  volume_change); 
 
 	
 	function setTitle(){
@@ -68,13 +74,15 @@ document.addEventListener('DOMContentLoaded', function(){
 	function getPercent(nCur, nMax){
 		return ~~(nCur*100/nMax);
 	}
-	function showDurationProgress (){
+	function showDurationProgress (bUpdateValue){
 		let nFull = getTime(nDuration)
 		let nCurrent = getTime(oAudio.currentTime)
 		oTime.innerText = `${nCurrent}/${nFull}`;
 		
 		let nPerc = getPercent(oAudio.currentTime, nDuration);
-		oProgress.value = nPerc;
+		if(bUpdateValue!==false) {
+			oProgress.value = nPerc;
+		}
 		
 		oProgress.style.background = `linear-gradient(90deg, ${oColors['main-color']} ${nPerc}%, ${oColors['color']} ${nPerc+0.1}%)`;
 	}
@@ -156,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		aRanges.forEach(function(oRange){
 			let nPerc = getPercent(oRange.value, 100);			
 			oRange.style.background = `linear-gradient(90deg, ${oColors['main-color']} ${nPerc}%, ${oColors['color']} ${nPerc+0.1}%)`;
+			
 			oRange.addEventListener('mousemove', function(oEvent){
 				let nPerc = getPercent(oEvent.target.value, 100);			
 				oRange.style.background = `linear-gradient(90deg, ${oColors['main-color']} ${nPerc}%, ${oColors['color']} ${nPerc+0.1}%)`;
@@ -164,6 +173,8 @@ document.addEventListener('DOMContentLoaded', function(){
 				let nPerc = getPercent(oEvent.target.value, 100);			
 				oRange.style.background = `linear-gradient(90deg, ${oColors['main-color']} ${nPerc}%, ${oColors['color']} ${nPerc+0.1}%)`;
 			});
+	
+			
 		});
 		
 		Audio.volume = 0.5;

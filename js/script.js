@@ -82,9 +82,9 @@ document.addEventListener('DOMContentLoaded', function(){
 		let nPerc = getPercent(oAudio.currentTime, nDuration);
 		if(bUpdateValue!==false) {
 			oProgress.value = nPerc;
+			oProgress.style.background = `linear-gradient(90deg, ${oColors['main-color']} ${nPerc}%, ${oColors['color']} ${nPerc+0.1}%)`;
 		}
 		
-		oProgress.style.background = `linear-gradient(90deg, ${oColors['main-color']} ${nPerc}%, ${oColors['color']} ${nPerc+0.1}%)`;
 	}
 	
 	function _play(){

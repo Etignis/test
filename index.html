@@ -29,7 +29,7 @@ python3 Too many positional arguments for function call   article, aside, detail
 			<audio id='audio'></audio>
 			<input id='files' type='file' multiple='true' accept='audio/*'>
 			<div id='info'>
-				<span id='title'> </span>
+				<span id='title'>Выберите файлы</span>
 				<span id='time'>00:00</span>
 			</div>
 			<div id='progress'>
@@ -44,7 +44,7 @@ python3 Too many positional arguments for function call   article, aside, detail
 					<li class='button' id='next' title='Следующий'>&#9654;&#9654;</li>
 				</ul>
 				<div class='volume'>
-					<input type='range'>
+					<input type='range' id='volume_input' min="0" max="100" value="50">
 				</div>
 			</div>
 		</div>
